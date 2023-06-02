@@ -1,0 +1,113 @@
+{
+    "TableName": "tb_dynamo_1",
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "id",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "name",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "date_mock",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "cod_mock_1",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "cod_mock_2",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "cod_mock_3",
+            "AttributeType": "S"
+        }
+    ],
+    "KeySchema": [
+        {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 5,
+        "WriteCapacityUnits": 5
+    },
+    "GlobalSecondaryIndexes": [
+        {
+            "IndexName": "idx_tb_dynamo_1",
+            "KeySchema": [
+                {
+                    "AttributeName": "name",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "date_mock",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "KEYS_ONLY"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 5,
+                "WriteCapacityUnits": 5
+            }
+        },
+        {
+            "IndexName": "idx_tb_dynamo_2",
+            "KeySchema": [
+                {
+                    "AttributeName": "cod_mock_3",
+                    "KeyType": "HASH"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "KEYS_ONLY"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 5,
+                "WriteCapacityUnits": 5
+            }
+        },
+        {
+            "IndexName": "idx_tb_dynamo_3",
+            "KeySchema": [
+                {
+                    "AttributeName": "cod_mock_1",
+                    "KeyType": "HASH"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "KEYS_ONLY"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 5,
+                "WriteCapacityUnits": 5
+            }
+        },
+        {
+            "IndexName": "idx_tb_dynamo_4",
+            "KeySchema": [
+                {
+                    "AttributeName": "cod_mock_2",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "date_mock",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "KEYS_ONLY"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 5,
+                "WriteCapacityUnits": 5
+            }
+        }
+    ]
+}

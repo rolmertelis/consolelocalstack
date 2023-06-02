@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: ${CONTAINER_NAME}
+    image: localstack/localstack
+    network_mode: bridge
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+      - "8001:8001"
+    environment:
+#      - SERVICES=${SERVICES}
+      - AWS_DEFAULT_REGION=sa-east-1
+      - AWS_ACCESS_KEY_ID=fakeAccessKeyId
+      - AWS_SECRET_ACCESS_KEY=fakeSecretAccessKey
+      - http_proxy=
+      - https_proxy=
+    volumes:
+      - "./resources:/etc/localstack/init/ready.d"
+
+# dependndo da versão da imagem da localstack, o volume criado pode ter os seguintes valores
+# versões mais antigas - "./resources:/docker-entrypoint-initaws.d"
+# versões mais novas - - "./resources:/etc/localstack/init/ready.d"
+# a pasata onde ficam os scripts que rodam após o container ficar pronto muda de uma versão para outra
